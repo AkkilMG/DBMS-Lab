@@ -1,0 +1,306 @@
+
+QL> CREATE TABLE EMP(EMPID int, EMPNAME varchar(9), SALARY int);
+
+able created.
+
+QL> DESC EMP
+Name                                      Null?    Type
+----------------------------------------- -------- ----------------------------
+EMPID                                              NUMBER(38)
+EMPNAME                                            VARCHAR2(9)
+SALARY                                             NUMBER(38)
+
+QL> INSERT INTO EMP VALUES(1,'Akkil', 159800);
+
+ row created.
+
+QL> INSERT INTO EMP(EMPID, EMPNAME) VALUES (2, 'Bharat');
+
+ row created.
+
+QL> INSERT INFO EMP VALUES(3, 'Shashank', 89050);
+NSERT INFO EMP VALUES(3, 'Shashank', 89050)
+      *
+RROR at line 1:
+RA-00925: missing INTO keyword
+
+
+QL>  INSERT INTO EMP VALUES(3, 'Shashank', 89050);
+
+ row created.
+
+QL> INSERT INTO EMP VALUES(4, 'Ashish', 79900);
+
+ row created.
+
+QL> INSERT INTO EMP VALUES(5, 'Babith', 57000);
+
+ row created.
+
+QL> INSERT INTO EMP(SALARY) VALUES(115000);
+
+ row created.
+
+QL> DESC EMP
+Name                                      Null?    Type
+----------------------------------------- -------- ----------------------------
+EMPID                                              NUMBER(38)
+EMPNAME                                            VARCHAR2(9)
+SALARY                                             NUMBER(38)
+
+QL> SELECT EMPNAME FROM EMP;
+
+MPNAME
+--------
+kkil
+harat
+hashank
+shish
+abith
+
+
+ rows selected.
+
+QL> SELECT EMPNAME, SALARY FROM EMP;
+
+MPNAME       SALARY
+-------- ----------
+kkil         159800
+harat
+hashank       89050
+shish         79900
+abith         57000
+             115000
+
+ rows selected.
+
+QL> DELETE FROM EMP WHERE EMPNAME='Bharat'
+ 2  
+QL> SELECT * FROM EMP;
+
+    EMPID EMPNAME       SALARY
+--------- --------- ----------
+        1 Akkil         159800
+        2 Bharat
+        3 Shashank       89050
+        4 Ashish         79900
+        5 Babith         57000
+                        115000
+
+ rows selected.
+
+QL> DELETE FROM EMP WHERE EMPNAME='Bharat';
+
+ row deleted.
+
+QL> INSERT INTO EMP VALUES(2, 'Bharat',115000)
+ 2  
+QL> INSERT INTO EMP VALUES(2, 'Bharat',115000);
+
+ row created.
+
+QL>  SELECT EMPNAME, SALARY FROM EMP;
+
+MPNAME       SALARY
+-------- ----------
+kkil         159800
+hashank       89050
+shish         79900
+abith         57000
+             115000
+harat        115000
+
+ rows selected.
+
+QL>  SELECT EMPNAME, SALARY FROM EMP WHERE EMPID=1;
+
+MPNAME       SALARY
+-------- ----------
+kkil         159800
+
+QL> DELETE FROM EMP WHERE SALARY=115000;
+
+ rows deleted.
+
+QL>  INSERT INTO EMP VALUES(2, 'Bharat',115000);
+
+ row created.
+
+QL> ALTER TABLE EMP ADD AGE int;
+
+able altered.
+
+QL> ALTER TABLE EMP DROP COLUMN AGE
+ 2  ;
+
+able altered.
+
+QL>  ALTER TABLE EMP ADD AGE int;
+
+able altered.
+
+QL> UPDATE EMP SET AGE=20 WHERE EMPID=1;
+
+ row updated.
+
+QL>  UPDATE EMP SET AGE=19 WHERE EMPID=1;
+
+ row updated.
+
+QL> DESC EMP;
+Name                                      Null?    Type
+----------------------------------------- -------- ----------------------------
+EMPID                                              NUMBER(38)
+EMPNAME                                            VARCHAR2(9)
+SALARY                                             NUMBER(38)
+AGE                                                NUMBER(38)
+
+QL> SELECT * FROM EMP;
+
+    EMPID EMPNAME       SALARY        AGE
+--------- --------- ---------- ----------
+        1 Akkil         159800         19
+        3 Shashank       89050
+        4 Ashish         79900
+        5 Babith         57000
+        2 Bharat        115000
+
+QL> UPDATE EMP SET AGE=20 WHERE EMPID=1;
+
+ row updated.
+
+QL> UPDATE EMP SET AGE=19 WHERE EMPID=2;
+
+ row updated.
+
+QL> UPDATE EMP SET AGE=24 WHERE EMPID=3;
+
+ row updated.
+
+QL> UPDATE EMP SET AGE=20 WHERE EMPID=4;
+
+ row updated.
+
+QL> UPDATE EMP SET AGE=49 WHERE EMPID=5;
+
+ row updated.
+
+QL> SELECT * FROM EMP;
+
+    EMPID EMPNAME       SALARY        AGE
+--------- --------- ---------- ----------
+        1 Akkil         159800         20
+        3 Shashank       89050         24
+        4 Ashish         79900         20
+        5 Babith         57000         49
+        2 Bharat        115000         19
+
+QL> ALTER TABLE EMP ADD DOB, DATE;
+LTER TABLE EMP ADD DOB, DATE
+                      *
+RROR at line 1:
+RA-01735: invalid ALTER TABLE option
+
+
+QL> ALTER TABLE EMP ADD DOB DATE;
+
+able altered.
+
+QL> ALTER TABLE EMP DROP DOS
+ 2  
+QL> ALTER TABLE EMP DROP DOB;
+LTER TABLE EMP DROP DOB
+                    *
+RROR at line 1:
+RA-00905: missing keyword
+
+
+QL> ALTER TABLE EMP DROP COLUMN DOB;
+
+able altered.
+
+QL> ALTER TABLE EMP MODIFY DATE VARCHAR(20);
+LTER TABLE EMP MODIFY DATE VARCHAR(20)
+                      *
+RROR at line 1:
+RA-00904: : invalid identifier
+
+
+QL> ALTER TABLE EMP MODIFY DATE VARCHAR2(20);
+LTER TABLE EMP MODIFY DATE VARCHAR2(20)
+                      *
+RROR at line 1:
+RA-00904: : invalid identifier
+
+
+QL> ALTER TABLE EMP MODIFY DATE VARCHAR2(20);
+LTER TABLE EMP MODIFY DATE VARCHAR2(20)
+                      *
+RROR at line 1:
+RA-00904: : invalid identifier
+
+
+QL> DESC EMP;
+Name                                      Null?    Type
+----------------------------------------- -------- ----------------------------
+EMPID                                              NUMBER(38)
+EMPNAME                                            VARCHAR2(9)
+SALARY                                             NUMBER(38)
+AGE                                                NUMBER(38)
+
+QL> ALTER TABLE EMP ADD DATE DATE;
+LTER TABLE EMP ADD DATE DATE
+                   *
+RROR at line 1:
+RA-00904: : invalid identifier
+
+
+QL> ALTER TABLE EMP ADD DOB DATE;
+
+able altered.
+
+QL> ALTER TABLE EMP MODIFY DOB VARCHAR2(20);
+
+able altered.
+
+QL> ALTER TABLE EMP RENAME COLUMN DOB TO DATEOFBIRTH;
+
+able altered.
+
+QL> ALTER TABLE EMP RENAME TO EMPLOYEE;
+
+able altered.
+
+QL> ALTER TABLE EMPLOYEE ADD CONSTRAINT EMPID_K PRIMARY KEY(EMPID);
+
+able altered.
+
+QL> DESC EMPLOYEE
+Name                                      Null?    Type
+----------------------------------------- -------- ----------------------------
+EMPID                                     NOT NULL NUMBER(38)
+EMPNAME                                            VARCHAR2(9)
+SALARY                                             NUMBER(38)
+AGE                                                NUMBER(38)
+DATEOFBIRTH                                        VARCHAR2(20)
+
+QL> CREATE TABLE STUDENT(USN VARCHAR2(11), Name VARCHAR(20), DOB DATE, Semester int, Percentage DEC
+MAL);
+
+able created.
+
+QL> DESC STUDENTY
+RROR:
+RA-04043: object STUDENTY does not exist
+
+
+QL> DESC STUDENT
+Name                                      Null?    Type
+----------------------------------------- -------- ----------------------------
+USN                                                VARCHAR2(11)
+NAME                                               VARCHAR2(20)
+DOB                                                DATE
+SEMESTER                                           NUMBER(38)
+PERCENTAGE                                         NUMBER(38)
+
+QL> 
